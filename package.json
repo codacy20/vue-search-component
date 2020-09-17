@@ -1,5 +1,5 @@
 {
-  "name": "vue",
+  "name": "vue-search-component",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@vue/cli-plugin-babel": "4.1.1",
-    "vue": "^2.6.11"
+    "@vue/cli-plugin-babel": "4.5.6",
+    "vue": "2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "4.1.1",
@@ -43,10 +43,6 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "keywords": [
-    "vue",
-    "vuejs",
-    "starter"
-  ],
-  "description": "Vue.js example starter project"
+  "keywords": [],
+  "description": ""
 }
