@@ -1,6 +1,7 @@
 <template>
   <div id="card-container">
     <Searchbox/>
+    <Dropdown/>
     <Scrollable/>
     <Footer/>
   </div>
@@ -25,5 +26,9 @@ export default {
 
 <style>
 #card-container {
+  width: 1136px;
+  height: 656px;
+  border-radius: 20px;
+  background: white;
 }
 </style>
