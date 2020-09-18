@@ -59,6 +59,10 @@ export default {
   line-height: 26px;
 }
 
+.dropdown-container::placeholder {
+  color: black;
+}
+
 .dropdown-temp-container {
   margin-top: 10px;
   background: white;
