@@ -1,7 +1,6 @@
 <template>
   <div id="card-container">
     <Searchbox/>
-    <Dropdown/>
     <Scrollable/>
     <Footer/>
   </div>
@@ -11,15 +10,13 @@
 import Footer from "../components/Footer";
 import Scrollable from "../components/Scrollable";
 import Searchbox from "../components/Searchbox";
-import Dropdown from "../components/Dropdown";
 
 export default {
   name: "Card",
   components: {
     Footer,
     Scrollable,
-    Searchbox,
-    Dropdown
+    Searchbox
   }
 };
 </script>

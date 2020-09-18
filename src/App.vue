@@ -26,6 +26,15 @@ export default {
 </script>
 
 <style>
+* {
+  font-family: nunito-sans, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
 #app {
   background: #E8EAEE;
   width: 99vw;
