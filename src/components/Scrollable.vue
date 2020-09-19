@@ -4,6 +4,9 @@
       <Tile/>
       <Tile/>
       <Tile/>
+      <Tile/>
+      <Tile/>
+      <Tile/>
     </div>
   </div>
 </template>
@@ -30,7 +33,7 @@ export default {
   height: 400px;
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 95%;
 }
 
 #wrapper::-webkit-scrollbar {

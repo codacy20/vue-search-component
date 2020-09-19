@@ -2,14 +2,15 @@
   <div id="footer-container">
     <div id="footer-wrapper">
       <span id="footer-one">#123 results</span>
-      <span>show me more results</span>
+      <span>show me more from {{artist}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
+  props: ["artist"]
 };
 </script>
 
@@ -25,7 +26,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 95%;
   height: 100%;
 }
 #footer-one {
