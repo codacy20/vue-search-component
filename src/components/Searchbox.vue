@@ -2,7 +2,7 @@
   <div id="searchbox-container">
     <div id="searchbox-wrapper">
       <div id="top">
-        <input type="text" id="searchbox" v-bind:placeholder="title">
+        <input type="text" id="searchbox" v-bind:placeholder="title" @input="search($event)">
         <Dropdown/>
         <button id="btn">Search</button>
       </div>
@@ -23,9 +23,26 @@ export default {
     Dropdown,
     Tags
   },
-  props: ["title", "tags"],
-  created() {
-    console.log(this.title);
+  props: ["title", "tags", "k"],
+  methods: {
+    search: function(event) {
+      if (event.target.value !== "" && event.target.value.length > 3) {
+        this.call(event.target.value);
+      } else if (event.target.value === "") {
+        this.call("Warm");
+      }
+    },
+    call(query) {
+      fetch(
+        `https://api.unsplash.com/search/collections?page=1&query=${query}&client_id=${
+          this.k
+        }`
+      )
+        .then(response => response.json())
+        .then(data => {
+          this.$emit("sendMsg", data.results[0]);
+        });
+    }
   }
 };
 </script>

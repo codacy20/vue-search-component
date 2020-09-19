@@ -4,7 +4,7 @@
       type="text"
       class="dropdown-container"
       v-on:click="toggle"
-      placeholder="Cat selected (nr)"
+      placeholder="category selected (nr)"
     >
     <div class="dropdown-temp-container" v-bind:class="{ active: isActive }">
       <ul>

@@ -5,7 +5,7 @@
     </a>
     <span id="title">{{item.alt_description}}</span>
     <a v-bind:href="item.user.links.html" target="_blank" id="handle">
-      <span id="sub-title">by: @{{item.user.name}}</span>
+      <span id="sub-title">by: @{{item.user.name}} on Unsplash</span>
     </a>
   </div>
 </template>

@@ -39,6 +39,7 @@ a {
   text-decoration: none;
   color: black;
   display: flex;
+  align-items: center;
 }
 #footer-one {
   color: #999FAA;

@@ -1,6 +1,6 @@
 <template>
   <div id="card-container">
-    <Searchbox :title="collection.title" :tags="collection.tags"/>
+    <Searchbox :title="collection.title" :tags="collection.tags" :k="k" @sendMsg="childMsg"/>
     <Scrollable :items="items"/>
     <Footer :collection="collection" :nr="items.length"/>
   </div>
@@ -20,24 +20,36 @@ export default {
     Searchbox
   },
   data() {
-    return { items: [], collection: { name: "", url: "", title: "" } };
+    return { items: [], collection: { name: "", url: "", title: "" }, k };
+  },
+  methods: {
+    childMsg: function(data) {
+      this.assignNewValue(data);
+      this.searchAndPopulate(data.id);
+    },
+    assignNewValue: function(data) {
+      this.$data.collection.name = `${data.user.first_name} ${
+        data.user.last_name
+      }`;
+      this.$data.collection.url = data.links.html;
+      this.$data.collection.title = data.title;
+      this.$data.collection.tags = data.tags;
+    },
+    searchAndPopulate: function(id) {
+      fetch(`https://api.unsplash.com/collections/${id}/photos/?client_id=${k}`)
+        .then(response => response.json())
+        .then(data => {
+          this.$data.items = data;
+        });
+    }
   },
   created() {
     fetch(`https://api.unsplash.com/collections/${id}/?client_id=${k}`)
       .then(response => response.json())
       .then(data => {
-        this.$data.collection.name = `${data.user.first_name} ${
-          data.user.last_name
-        }`;
-        this.$data.collection.url = data.links.html;
-        this.$data.collection.title = data.title;
-        this.$data.collection.tags = data.tags;
+        this.assignNewValue(data);
       });
-    fetch(`https://api.unsplash.com/collections/${id}/photos/?client_id=${k}`)
-      .then(response => response.json())
-      .then(data => {
-        this.$data.items = data;
-      });
+    this.searchAndPopulate(id);
   }
 };
 </script>
