@@ -1,7 +1,7 @@
 <template>
   <div id="card-container">
     <Searchbox/>
-    <Scrollable/>
+    <Scrollable :items="items"/>
     <Footer :artist="artist"/>
   </div>
 </template>
@@ -26,11 +26,15 @@ export default {
     fetch(`https://api.unsplash.com/collections/${id}/?client_id=${k}`)
       .then(response => response.json())
       .then(data => {
-        this.$data.items = data;
         this.$data.artist.name = `${data.user.first_name} ${
           data.user.last_name
         }`;
-        this.$data.artist.url = data.user.links.html;
+        this.$data.artist.url = data.links.html;
+      });
+    fetch(`https://api.unsplash.com/collections/${id}/photos/?client_id=${k}`)
+      .then(response => response.json())
+      .then(data => {
+        this.$data.items = data;
       });
   }
 };

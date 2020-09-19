@@ -1,12 +1,7 @@
 <template>
   <div id="scrollable-container">
     <div id="wrapper">
-      <Tile/>
-      <Tile/>
-      <Tile/>
-      <Tile/>
-      <Tile/>
-      <Tile/>
+      <Tile v-for="item in items" v-bind:key="item.id" :item="item"/>
     </div>
   </div>
 </template>
@@ -18,7 +13,8 @@ export default {
   name: "Scrollable",
   components: {
     Tile
-  }
+  },
+  props: ["items"]
 };
 </script>
 
