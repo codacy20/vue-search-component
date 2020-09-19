@@ -2,14 +2,12 @@
   <div id="searchbox-container">
     <div id="searchbox-wrapper">
       <div id="top">
-        <input type="text" id="searchbox">
+        <input type="text" id="searchbox" v-bind:placeholder="title">
         <Dropdown/>
         <button id="btn">Search</button>
       </div>
       <div id="down">
-        <Tags/>
-        <Tags/>
-        <Tags/>
+        <Tags v-for="(tag, index) in tags" :key="index" :tag="tag"/>
       </div>
     </div>
   </div>
@@ -24,6 +22,10 @@ export default {
   components: {
     Dropdown,
     Tags
+  },
+  props: ["title", "tags"],
+  created() {
+    console.log(this.title);
   }
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div id="footer-container">
     <div id="footer-wrapper">
-      <span id="footer-one">#123 results</span>
-      <a v-bind:href="artist.url" target="_blank">
+      <span id="footer-one">{{nr}} results</span>
+      <a v-bind:href="collection.url" target="_blank">
         <span>show me the collection</span>
         <span class="material-icons">keyboard_arrow_right</span>
       </a>
@@ -13,7 +13,7 @@
 <script>
 export default {
   name: "Footer",
-  props: ["artist"],
+  props: ["collection", "nr"],
   created() {
     // console.log(this.artist);
   }

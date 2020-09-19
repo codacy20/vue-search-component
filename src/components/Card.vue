@@ -1,8 +1,8 @@
 <template>
   <div id="card-container">
-    <Searchbox/>
+    <Searchbox :title="collection.title" :tags="collection.tags"/>
     <Scrollable :items="items"/>
-    <Footer :artist="artist"/>
+    <Footer :collection="collection" :nr="items.length"/>
   </div>
 </template>
 
@@ -20,16 +20,18 @@ export default {
     Searchbox
   },
   data() {
-    return { items: [], artist: { name: "", url: "" } };
+    return { items: [], collection: { name: "", url: "", title: "" } };
   },
   created() {
     fetch(`https://api.unsplash.com/collections/${id}/?client_id=${k}`)
       .then(response => response.json())
       .then(data => {
-        this.$data.artist.name = `${data.user.first_name} ${
+        this.$data.collection.name = `${data.user.first_name} ${
           data.user.last_name
         }`;
-        this.$data.artist.url = data.links.html;
+        this.$data.collection.url = data.links.html;
+        this.$data.collection.title = data.title;
+        this.$data.collection.tags = data.tags;
       });
     fetch(`https://api.unsplash.com/collections/${id}/photos/?client_id=${k}`)
       .then(response => response.json())
