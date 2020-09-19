@@ -2,7 +2,10 @@
   <div id="footer-container">
     <div id="footer-wrapper">
       <span id="footer-one">#123 results</span>
-      <span>show me more from {{artist}}</span>
+      <a v-bind:href="artist.url">
+        <span>show me more from {{artist.name}}</span>
+        <span class="material-icons">keyboard_arrow_right</span>
+      </a>
     </div>
   </div>
 </template>
@@ -10,7 +13,10 @@
 <script>
 export default {
   name: "Footer",
-  props: ["artist"]
+  props: ["artist"],
+  created() {
+    console.log(this.artist);
+  }
 };
 </script>
 
@@ -28,6 +34,11 @@ export default {
   align-items: center;
   width: 95%;
   height: 100%;
+}
+a {
+  text-decoration: none;
+  color: black;
+  display: flex;
 }
 #footer-one {
   color: #999FAA;

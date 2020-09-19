@@ -2,7 +2,7 @@
   <div id="card-container">
     <Searchbox/>
     <Scrollable/>
-    <Footer v-bind:artist="artist"/>
+    <Footer :artist="artist"/>
   </div>
 </template>
 
@@ -20,14 +20,17 @@ export default {
     Searchbox
   },
   data() {
-    return { items: [], artist: "" };
+    return { items: [], artist: { name: "", url: "" } };
   },
   created() {
     fetch(`https://api.unsplash.com/collections/${id}/?client_id=${k}`)
       .then(response => response.json())
       .then(data => {
         this.$data.items = data;
-        this.$data.artist = `${data.user.first_name} ${data.user.last_name}`;
+        this.$data.artist.name = `${data.user.first_name} ${
+          data.user.last_name
+        }`;
+        this.$data.artist.url = data.user.links.html;
       });
   }
 };
