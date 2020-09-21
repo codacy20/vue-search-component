@@ -7,6 +7,7 @@
         <button id="btn">Search</button>
       </div>
       <div id="down">
+        <span>Tags:</span>
         <Tags v-for="(tag, index) in tags" :key="index" :tag="tag"/>
       </div>
     </div>

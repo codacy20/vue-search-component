@@ -1,7 +1,6 @@
 <template>
   <div id="tags-container">
     <span>{{tag.title}}</span>
-    <span class="material-icons">clear</span>
   </div>
 </template>
 
@@ -23,7 +22,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 .material-icons {
   cursor: pointer;
