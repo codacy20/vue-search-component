@@ -29,6 +29,7 @@ export default {
     search: function(event) {
       if (event.target.value !== "" && event.target.value.length > 3) {
         this.call(event.target.value);
+        this.trace(event.target.value);
       } else if (event.target.value === "") {
         this.call("Warm");
       }
@@ -42,6 +43,21 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.$emit("sendMsg", data.results[0]);
+        });
+    },
+    trace(query) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ createdAt: new Date(), phrase: query, ip: null })
+      };
+      fetch(
+        "https://5f59f40eb121580016cadfef.mockapi.io/api/search",
+        requestOptions
+      )
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
         });
     }
   }
