@@ -1,11 +1,7 @@
 <template>
   <div>
-    <input
-      type="text"
-      class="dropdown-container"
-      v-on:click="toggle"
-      placeholder="category selected (nr)"
-    >
+    <input type="text" class="dropdown-container" placeholder="category selected (0)" disabled>
+    <!-- v-on:click="toggle" -->
     <div class="dropdown-temp-container" v-bind:class="{ active: isActive }">
       <ul>
         <li>
@@ -52,7 +48,7 @@ export default {
   border-radius: 12px;
   width: 304px;
   height: 74px;
-  cursor: pointer;
+  cursor: not-allowed;
   padding: 24px;
   font-weight: 500;
   font-size: 20px;
@@ -60,7 +56,7 @@ export default {
 }
 
 .dropdown-container::placeholder {
-  color: black;
+  color: #999FAA;
 }
 
 .dropdown-temp-container {
