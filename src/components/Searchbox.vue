@@ -2,31 +2,33 @@
   <div id="searchbox-container">
     <div id="searchbox-wrapper">
       <div id="top">
-        <input type="text" id="searchbox" v-bind:placeholder="title" @input="search($event)">
-        <Dropdown/>
+        <input
+          type="text"
+          id="searchbox"
+          v-bind:placeholder="title"
+          @input="search($event)"
+        />
         <button id="btn">Search</button>
       </div>
       <div id="down">
         <span>Tags:</span>
-        <Tags v-for="(tag, index) in tags" :key="index" :tag="tag"/>
+        <Tags v-for="(tag, index) in tags" :key="index" :tag="tag" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Dropdown from "../components/Dropdown";
 import Tags from "../components/Tags";
 
 export default {
   name: "Searchbox",
   components: {
-    Dropdown,
-    Tags
+    Tags,
   },
   props: ["title", "tags", "k"],
   methods: {
-    search: function(event) {
+    search: function (event) {
       if (event.target.value !== "" && event.target.value.length > 3) {
         this.call(event.target.value);
         this.trace(event.target.value);
@@ -36,12 +38,10 @@ export default {
     },
     call(query) {
       fetch(
-        `https://api.unsplash.com/search/collections?page=1&query=${query}&client_id=${
-          this.k
-        }`
+        `https://api.unsplash.com/search/collections?page=1&query=${query}&client_id=${this.k}`
       )
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           this.$emit("sendMsg", data.results[0]);
         });
     },
@@ -49,18 +49,22 @@ export default {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ createdAt: new Date(), phrase: query, ip: null })
+        body: JSON.stringify({
+          createdAt: new Date(),
+          phrase: query,
+          ip: null,
+        }),
       };
       fetch(
         "https://5f59f40eb121580016cadfef.mockapi.io/api/search",
         requestOptions
       )
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           console.log(data);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -94,7 +98,7 @@ export default {
 }
 
 #searchbox-container #searchbox {
-  background: #F2F4F8;
+  background: #f2f4f8;
   background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
   background-position-y: center;
   background-repeat: no-repeat;
@@ -103,7 +107,7 @@ export default {
   border-radius: 12px;
   border: 0;
   height: 74px;
-  width: 642px;
+  width: 80%;
   font-size: 20px;
   line-height: 26px;
   padding-left: 58px;
@@ -115,7 +119,7 @@ export default {
   border-radius: 12px;
   color: white;
   height: 74px;
-  width: 110px;
+  width: 18%;
   border: 0;
   cursor: pointer;
 }

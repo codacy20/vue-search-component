@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Card from "./components/Card";
+import Card from "../components/Card";
 
 export default {
   name: "App",
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     go() {
-      window.open("https://mobile.twitter.com/RT_Amir", "_blank");
+      window.open("https://github.com/codacy20", "_blank");
     }
   }
 };
@@ -37,8 +37,8 @@ export default {
 
 #app {
   background: #E8EAEE;
-  width: 99vw;
-  height: 98.3vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
