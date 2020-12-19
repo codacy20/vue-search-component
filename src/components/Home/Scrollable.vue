@@ -1,13 +1,13 @@
 <template>
-  <div id="scrollable-container">
-    <div id="tile-wrapper">
+  <div class="scrollable-container">
+    <div class="tile-wrapper">
       <Tile v-for="item in items" v-bind:key="item.id" :item="item" />
     </div>
   </div>
 </template>
 
 <script>
-import Tile from "../components/Tile";
+import Tile from "./Tile";
 
 export default {
   name: "Scrollable",
@@ -18,18 +18,18 @@ export default {
 };
 </script>
 
-<style>
-#scrollable-container {
+<style lang="scss" scoped>
+.scrollable-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-#tile-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-  width: 95%;
+  .tile-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-height: 25rem;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+  }
 }
 </style>

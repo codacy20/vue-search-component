@@ -1,5 +1,5 @@
 <template>
-  <div id="card-container">
+  <div class="card-container">
     <Searchbox
       :title="title"
       :tags="tags"
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Scrollable from "../components/Scrollable";
-import Searchbox from "../components/Searchbox";
+import Footer from "./Footer";
+import Scrollable from "./Scrollable";
+import Searchbox from "./Searchbox";
 export default {
-  name: "Card",
+  name: "HomeContext",
   components: {
     Footer,
     Scrollable,
@@ -46,7 +46,7 @@ export default {
       // this.searchAndPopulate();
     },
     assignNewValue: function (input) {
-      this.$data.title = input.replace('_', ' ');
+      this.$data.title = input.replace("_", " ");
     },
     searchAndPopulate: function (input) {
       fetch(
@@ -65,10 +65,12 @@ export default {
 };
 </script>
 
-<style>
-#card-container {
+style <style lang="scss" scoped>
+.card-container {
   width: 85vw;
-  height: 50vh;
+  max-width: 55rem;
+  height: 70vh;
+  max-height: 39rem;
   border-radius: 20px;
   background: white;
 }

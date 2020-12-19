@@ -1,5 +1,5 @@
 <template>
-  <div id="tags-container" v-on:click="emitEvent">
+  <div class="tags-container" v-on:click="emitEvent">
     <span>{{ tag.name }}</span>
   </div>
 </template>
@@ -16,10 +16,10 @@ export default {
 };
 </script>
 
-<style>
-#tags-container {
-  padding: 0 10px;
-  height: 32px;
+<style lang="scss" scoped>
+.tags-container {
+  padding: 0 0.75rem;
+  height: 2rem;
   background: #ffffff;
   border: 2px solid #e8eaee;
   box-sizing: border-box;
@@ -27,12 +27,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 10px;
-}
-.material-icons {
+  margin-left: 1rem;
   cursor: pointer;
-  height: 15px;
-  font-size: 18px;
-  margin-left: 5px;
 }
-</style>
+</style>>

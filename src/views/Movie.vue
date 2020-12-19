@@ -1,14 +1,14 @@
 <template>
-  <div id="wrapper">
-    <div id="card-container"></div>
-  </div>
+  <MovieContext />
 </template>
 
 <script>
+import MovieContext from "../components/Movie/MovieContext";
+
 export default {
-  components: {},
+  name: "Movie",
+  components: {
+    MovieContext,
+  },
 };
 </script>
-
-<style scoped>
-</style>
