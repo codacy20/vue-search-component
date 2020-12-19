@@ -1,6 +1,6 @@
 <template>
   <div id="scrollable-container">
-    <div id="wrapper">
+    <div id="tile-wrapper">
       <Tile v-for="item in items" v-bind:key="item.id" :item="item" />
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-#wrapper {
+#tile-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   height: 400px;

@@ -2,6 +2,7 @@
   "name": "vue-search-component",
   "version": "0.1.0",
   "private": true,
+  "description": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,10 +10,12 @@
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "4.5.6",
-    "vue": "2.6.12"
+    "vue": "2.6.12",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "4.1.1",
+    "@vue/cli-plugin-router": "^4.5.9",
     "@vue/cli-service": "4.1.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
@@ -43,6 +46,5 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "keywords": [],
-  "description": ""
+  "keywords": []
 }
