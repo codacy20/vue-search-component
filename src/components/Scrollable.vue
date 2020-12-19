@@ -1,7 +1,7 @@
 <template>
   <div id="scrollable-container">
     <div id="wrapper">
-      <Tile v-for="item in items" v-bind:key="item.id" :item="item"/>
+      <Tile v-for="item in items" v-bind:key="item.id" :item="item" />
     </div>
   </div>
 </template>
@@ -12,9 +12,9 @@ import Tile from "../components/Tile";
 export default {
   name: "Scrollable",
   components: {
-    Tile
+    Tile,
   },
-  props: ["items"]
+  props: ["items"],
 };
 </script>
 
@@ -26,13 +26,10 @@ export default {
 }
 #wrapper {
   overflow-x: scroll;
+  overflow-y: hidden;
   height: 400px;
   display: flex;
   flex-direction: row;
   width: 95%;
-}
-
-#wrapper::-webkit-scrollbar {
-  width: 0px; /* For Chrome, Safari, and Opera */
 }
 </style>

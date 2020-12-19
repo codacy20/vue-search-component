@@ -1,13 +1,18 @@
 <template>
-  <div id="tags-container">
-    <span>{{tag.title}}</span>
+  <div id="tags-container" v-on:click="emitEvent">
+    <span>{{ tag.name }}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: "Tags",
-  props: ["tag"]
+  props: ["tag"],
+  methods: {
+    emitEvent() {
+      this.$emit("chooseTag", this.$props.tag.url);
+    },
+  },
 };
 </script>
 
@@ -15,8 +20,8 @@ export default {
 #tags-container {
   padding: 0 10px;
   height: 32px;
-  background: #FFFFFF;
-  border: 2px solid #E8EAEE;
+  background: #ffffff;
+  border: 2px solid #e8eaee;
   box-sizing: border-box;
   border-radius: 4px;
   display: flex;

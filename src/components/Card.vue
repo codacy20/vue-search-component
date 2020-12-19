@@ -1,13 +1,14 @@
 <template>
   <div id="card-container">
     <Searchbox
-      :title="collection.title"
-      :tags="collection.tags"
+      :title="title"
+      :tags="tags"
       :k="k"
       @sendMsg="childMsg"
+      @chooseTag="searchAndPopulate"
     />
     <Scrollable :items="items" />
-    <Footer :collection="collection" :nr="items.length" />
+    <Footer :nr="items.length" />
   </div>
 </template>
 
@@ -27,49 +28,47 @@ export default {
     const k = process.env.VUE_APP_K;
     return {
       items: [],
-      collection: { name: "", url: "", title: "" },
+      tags: [
+        { name: "Popular", url: "popular" },
+        { name: "Top rated", url: "top_rated" },
+        { name: "Now playing", url: "now_playing" },
+        { name: "Upcoming", url: "upcoming" },
+      ],
+      title: "popular",
       k,
       defaultID,
     };
   },
   methods: {
-    childMsg: function (data) {
-      this.assignNewValue(data);
-      this.searchAndPopulate(data.id);
+    childMsg: function (data, title) {
+      this.$data.items = data;
+      this.assignNewValue(title);
+      // this.searchAndPopulate();
     },
-    assignNewValue: function (data) {
-      this.$data.collection.name = `${data.user.first_name} ${data.user.last_name}`;
-      this.$data.collection.url = data.links.html;
-      this.$data.collection.title = data.title;
-      this.$data.collection.tags = data.tags;
+    assignNewValue: function (input) {
+      this.$data.title = input.replace('_', ' ');
     },
-    searchAndPopulate: function (id) {
+    searchAndPopulate: function (input) {
       fetch(
-        `https://api.unsplash.com/collections/${id}/photos/?client_id=${this.$data.k}`
+        `https://api.themoviedb.org/3/movie/${input}?api_key=${this.$data.k}&language=en-US&page=1`
       )
         .then((response) => response.json())
         .then((data) => {
-          this.$data.items = data;
+          this.$data.items = data.results;
+          this.assignNewValue(input);
         });
     },
   },
   created() {
-    fetch(
-      `https://api.unsplash.com/collections/${this.$data.defaultID}/?client_id=${this.$data.k}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.assignNewValue(data);
-      });
-    this.searchAndPopulate(this.$data.defaultID);
+    this.searchAndPopulate(this.$data.title);
   },
 };
 </script>
 
 <style>
 #card-container {
-  width: 1136px;
-  height: 656px;
+  width: 85vw;
+  height: 50vh;
   border-radius: 20px;
   background: white;
 }

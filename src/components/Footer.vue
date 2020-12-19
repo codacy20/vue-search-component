@@ -2,10 +2,6 @@
   <div id="footer-container">
     <div id="footer-wrapper">
       <span id="footer-one">{{nr}} results</span>
-      <a v-bind:href="collection.url" target="_blank">
-        <span>show me the collection</span>
-        <span class="material-icons">keyboard_arrow_right</span>
-      </a>
     </div>
   </div>
 </template>

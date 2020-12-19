@@ -1,13 +1,20 @@
 <template>
   <div id="tile-container">
-    <a v-bind:href="item.links.html" target="_blank">
-      <img v-bind:src="item.urls.small" alt="#">
-    </a>
-    <span id="no-desc" v-if="!item.alt_description">sorry, didn't find a description for this photo</span>
-    <span id="title" v-if="item.alt_description">{{item.alt_description}}</span>
-    <a v-bind:href="item.user.links.html" target="_blank" id="handle">
-      <span id="sub-title">by: @{{item.user.name}} on Unsplash</span>
-    </a>
+    <div
+      class="image"
+      v-if="item.poster_path"
+      :style="{
+        backgroundImage: `url('https://image.tmdb.org/t/p/w200${this.item.poster_path}')`,
+      }"
+    ></div>
+    <div class="image" v-if="!item.poster_path">
+      <img class="image" src="https://via.placeholder.com/200" alt="" />
+    </div>
+    <span id="no-desc" v-if="!item.title"
+      >sorry, didn't find a description for this photo</span
+    >
+    <span id="title" v-if="item.title">{{ item.title }}</span>
+    <span id="sub-title">Release: {{ item.release_date }}</span>
   </div>
 </template>
 
@@ -15,14 +22,13 @@
 export default {
   name: "Tile",
   props: ["item"],
-  created() {}
 };
 </script>
 
 <style>
 #tile-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   margin-right: 48px;
@@ -30,8 +36,8 @@ export default {
 #handle {
   width: 100%;
 }
-img {
-  width: 354px;
+.image {
+  width: 200px;
   height: 236px;
   object-fit: cover;
   border-radius: 12px;
@@ -41,18 +47,18 @@ img {
   font-weight: 500;
   font-size: 24px;
   line-height: 30px;
-  height: 75px;
+  height: 40px;
 }
 #sub-title {
   width: 100%;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
-  color: #999FAA;
+  color: #999faa;
 }
 
 #no-desc {
-  color: #999FAA;
+  color: #999faa;
   width: 100%;
   font-weight: 500;
   font-size: 20px;

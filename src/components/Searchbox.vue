@@ -12,7 +12,12 @@
       </div>
       <div id="down">
         <span>Tags:</span>
-        <Tags v-for="(tag, index) in tags" :key="index" :tag="tag" />
+        <Tags
+          v-for="(tag, index) in tags"
+          :key="index"
+          :tag="tag"
+          @chooseTag="searchAndPopulate"
+        />
       </div>
     </div>
   </div>
@@ -29,20 +34,20 @@ export default {
   props: ["title", "tags", "k"],
   methods: {
     search: function (event) {
-      if (event.target.value !== "" && event.target.value.length > 3) {
+      if (event.target.value !== "" && event.target.value.length >= 3) {
         this.call(event.target.value);
-        this.trace(event.target.value);
+        // this.trace(event.target.value);
       } else if (event.target.value === "") {
-        this.call("Warm");
+        this.call("War dogs");
       }
     },
     call(query) {
       fetch(
-        `https://api.unsplash.com/search/collections?page=1&query=${query}&client_id=${this.k}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${this.k}&language=en-US&query=${query}&page=1&include_adult=false`
       )
         .then((response) => response.json())
         .then((data) => {
-          this.$emit("sendMsg", data.results[0]);
+          this.$emit("sendMsg", data.results, query);
         });
     },
     trace(query) {
@@ -63,6 +68,9 @@ export default {
         .then((data) => {
           console.log(data);
         });
+    },
+    searchAndPopulate(input) {
+      this.$emit("chooseTag", input);
     },
   },
 };
