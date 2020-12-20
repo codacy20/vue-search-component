@@ -35,7 +35,7 @@ export default {
       overflow-x: hidden;
       overflow-y: scroll;
       max-height: none;
-      height: 32rem;
+      height: 55vh;
     }
   }
 }
