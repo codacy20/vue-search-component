@@ -64,9 +64,14 @@ style <style lang="scss" scoped>
 .card-container {
   width: 85vw;
   max-width: 55rem;
-  height: 70vh;
-  max-height: 39rem;
+  // max-height: 39rem;
   border-radius: 20px;
   background: white;
+  @media screen and (max-width: 600px) {
+    height: 90vh;
+    max-height: none;
+    width: 95vw;
+    max-width: none;
+  }
 }
 </style>

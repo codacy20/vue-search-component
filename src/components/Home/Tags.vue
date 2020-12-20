@@ -27,7 +27,6 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 1rem;
   cursor: pointer;
 }
 </style>>

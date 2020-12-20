@@ -74,21 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-#down {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  margin-top: 1rem;
-}
-
 .searchbox-container {
   display: flex;
   justify-content: center;
@@ -97,8 +82,30 @@ export default {
   width: 100%;
   height: 20vh;
   max-height: 10rem;
+  @media screen and (max-width: 600px) {
+    margin: 2rem 0;
+  }
   .searchbox-wrapper {
     width: 95%;
+    @media screen and (max-width: 600px) {
+      box-sizing: unset;
+    }
+    #top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    #down {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
     #btn {
       background: #000000;
       border-radius: 12px;
@@ -108,6 +115,9 @@ export default {
       width: 18%;
       border: 0;
       cursor: pointer;
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
     }
     #searchbox {
       background: #f2f4f8;
@@ -126,6 +136,9 @@ export default {
       padding-left: 58px;
       box-sizing: border-box;
       font-weight: 500;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 }

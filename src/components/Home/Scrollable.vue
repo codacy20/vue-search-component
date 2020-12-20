@@ -30,6 +30,13 @@ export default {
     display: flex;
     flex-direction: row;
     width: 95%;
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      max-height: none;
+      height: 32rem;
+    }
   }
 }
 </style>
