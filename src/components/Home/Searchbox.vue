@@ -104,7 +104,7 @@ export default {
       width: 100%;
       margin-top: 1rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      // gap: 0.5rem;
     }
     #btn {
       background: #000000;

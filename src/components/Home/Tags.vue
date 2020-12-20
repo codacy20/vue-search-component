@@ -28,5 +28,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  margin: 0.5rem;
 }
 </style>>
