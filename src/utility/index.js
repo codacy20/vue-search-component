@@ -1,0 +1,1 @@
+export { fetchMovie, searchMovie } from './MovieAPI';

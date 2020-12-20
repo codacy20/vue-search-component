@@ -3,7 +3,6 @@
     <Searchbox
       :title="title"
       :tags="tags"
-      :k="k"
       @sendMsg="childMsg"
       @chooseTag="searchAndPopulate"
     />
@@ -16,6 +15,8 @@
 import Footer from "./Footer";
 import Scrollable from "./Scrollable";
 import Searchbox from "./Searchbox";
+import { fetchMovie } from "../../utility/";
+
 export default {
   name: "HomeContext",
   components: {
@@ -25,7 +26,6 @@ export default {
   },
   data() {
     const defaultID = "8469893";
-    const k = process.env.VUE_APP_K;
     return {
       items: [],
       tags: [
@@ -35,7 +35,6 @@ export default {
         { name: "Upcoming", url: "upcoming" },
       ],
       title: "popular",
-      k,
       defaultID,
     };
   },
@@ -49,14 +48,10 @@ export default {
       this.$data.title = input.replace("_", " ");
     },
     searchAndPopulate: function (input) {
-      fetch(
-        `https://api.themoviedb.org/3/movie/${input}?api_key=${this.$data.k}&language=en-US&page=1`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          this.$data.items = data.results;
-          this.assignNewValue(input);
-        });
+      fetchMovie(input).then((data) => {
+        this.$data.items = data.results;
+        this.assignNewValue(input);
+      });
     },
   },
   created() {

@@ -1,5 +1,5 @@
 <template>
-  <div class="tile-container">
+  <div class="tile-container" v-on:click="navigate">
     <div
       class="image"
       v-if="item.poster_path"
@@ -24,6 +24,11 @@
 export default {
   name: "Tile",
   props: ["item"],
+  methods: {
+    navigate() {
+      this.$router.push(`/movie/${this.$props.item.id}`);
+    },
+  },
 };
 </script>
 
@@ -33,6 +38,7 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-right: 2rem;
+  cursor: pointer;
   .image {
     width: 13rem;
     max-width: 13rem;

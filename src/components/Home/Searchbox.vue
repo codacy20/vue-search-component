@@ -25,6 +25,7 @@
 
 <script>
 import Tags from "./Tags";
+import { searchMovie } from "../../utility/";
 
 export default {
   name: "Searchbox",
@@ -42,13 +43,9 @@ export default {
       }
     },
     call(query) {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${this.k}&language=en-US&query=${query}&page=1&include_adult=false`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          this.$emit("sendMsg", data.results, query);
-        });
+      searchMovie(query).then((data) => {
+        this.$emit("sendMsg", data.results, query);
+      });
     },
     trace(query) {
       const requestOptions = {
